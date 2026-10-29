@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayala Hardy · Software & AI Engineer</title>
+<meta name="description" content="Ayala Hardy — Software & AI Engineer. Agentic RAG, LLM agents, backend and full-stack systems in Python, .NET and Angular.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --surface:#ffffff; --ink:#16161a; --muted:#5d5d66; --line:#e3dfd6;
+  --accent:#3b3bd6; --accent-soft:#e6e6fb; --chip:#efece5; --glow:rgba(59,59,214,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0f13; --surface:#16181e; --ink:#eceaf2; --muted:#9a9aa8; --line:#262933;
+    --accent:#8f8fff; --accent-soft:#22234a; --chip:#1d2027; --glow:rgba(143,143,255,.14);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0f13; --surface:#16181e; --ink:#eceaf2; --muted:#9a9aa8; --line:#262933;
+  --accent:#8f8fff; --accent-soft:#22234a; --chip:#1d2027; --glow:rgba(143,143,255,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.02em;line-height:1.1}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;text-decoration:none}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:22px;align-items:center}
+.links a{text-decoration:none;color:var(--muted);font-size:14px}
+.links a:hover{color:var(--ink)}
+#theme{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:15px}
+
+/* hero */
+.hero{padding:96px 0 72px;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% 20%,var(--glow),transparent 70%);pointer-events:none}
+.tag{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:var(--muted);border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#22b573;box-shadow:0 0 0 4px rgba(34,181,115,.18)}
+.hero h1{font-size:clamp(44px,8vw,92px);font-weight:800;margin:22px 0 18px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:640px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--surface)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:64px}
+.stat{background:var(--surface);padding:20px}
+.stat b{display:block;font-family:"Bricolage Grotesque";font-size:28px}
+.stat small{color:var(--muted);font-size:13px}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.head h2{font-size:clamp(30px,4vw,42px)}
+.head .mono{color:var(--muted);font-size:13px}
+
+/* featured */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:32px;margin-bottom:20px}
+.feature .kicker{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.feature h3{font-size:28px;margin:8px 0 10px}
+.feature p{color:var(--muted)}
+.feature ul{list-style:none;display:grid;gap:12px}
+.feature li{padding-left:18px;position:relative;font-size:15px}
+.feature li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:2px;background:var(--accent)}
+.feature li b{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.chip{font:12px "IBM Plex Mono",monospace;background:var(--chip);color:var(--ink);padding:4px 9px;border-radius:6px}
+.more{display:inline-block;margin-top:18px;font-weight:600;color:var(--accent);text-decoration:none;font-size:15px}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card .icon{font-size:22px}
+.card h3{font-size:19px;margin:10px 0 6px}
+.card p{color:var(--muted);font-size:14.5px;flex:1}
+.card .chips{margin-top:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filters button{font:500 13px "IBM Plex Sans";padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.skill h3{font-size:15px;font-family:"IBM Plex Mono";font-weight:500;color:var(--accent);margin-bottom:12px;letter-spacing:0}
+
+/* education */
+.timeline{display:grid;gap:14px}
+.edu{display:grid;grid-template-columns:140px 1fr;gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.edu .when{color:var(--muted);font-size:13px}
+.edu h3{font-size:20px;margin-bottom:4px}
+.edu p{color:var(--muted);font-size:15px}
+.honor{display:inline-block;font-size:12px;background:var(--accent-soft);color:var(--accent);padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle;font-family:"IBM Plex Sans";font-weight:600}
+
+/* contact */
+.contact{text-align:center;padding:96px 0}
+.contact h2{font-size:clamp(34px,6vw,60px);margin-bottom:14px}
+.contact p{color:var(--muted);margin-bottom:28px}
+.contact .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:860px){
+  .feature{grid-template-columns:1fr;padding:24px}
+  .grid,.skills{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .links a:not(.keep){display:none}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .grid,.skills{grid-template-columns:1fr}
+  .edu{grid-template-columns:1fr;gap:6px}
+  .hero{padding:64px 0 48px}
+}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">ayala<span>.</span>hardy</a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact" class="keep">Contact</a>
+      <button id="theme" aria-label="Toggle theme">◐</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag"><i class="dot"></i> Open to Software & AI Engineering roles</span>
+    <h1>Ayala Hardy<br><em>Software & AI</em> Engineer.</h1>
+    <p class="lead">I build agentic RAG systems, LLM agents and the production backends that keep them reliable — in Python, .NET and Angular. Honors graduate in Software Engineering with a strong foundation in algorithms, math and machine learning.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See my work →</a>
+      <a class="btn" href="https://github.com/AyalaOnGit" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:arh67637@gmail.com">Email me</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>15+</b><small>public projects</small></div>
+      <div class="stat"><b>Agentic RAG</b><small>enterprise platform</small></div>
+      <div class="stat"><b>3</b><small>stacks: Python · .NET · Angular</small></div>
+      <div class="stat"><b>Honors</b><small>Software Engineering</small></div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head"><h2>Featured work</h2><span class="mono">// the systems I'm proudest of</span></div>
+
+    <article class="feature reveal">
+      <div>
+        <span class="kicker mono">VAST DATA Bootcamp · Agent Harness Team · 2026</span>
+        <h3>DataNet — Enterprise Agentic RAG Platform</h3>
+        <p>A production-grade RAG platform with hybrid search over OpenSearch and grounded, evidence-backed answers — built as part of a team in a real Git-based workflow.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">LangGraph</span><span class="chip">PostgreSQL</span><span class="chip">Alembic</span><span class="chip">OpenSearch</span><span class="chip">OpenTelemetry</span><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">GitHub Actions</span></div>
+      </div>
+      <ul>
+        <li><b>Agentic decision engine</b> — graph-based LLM agents with dynamic routing, query decomposition, conditional tool use, evidence-sufficiency checks, answer reflection and a semantic cache.</li>
+        <li><b>End-to-end feedback loop</b> — answer-rating service linking each rating to its trace, auto-classifying failures, routing to an admin review queue with permissions and audit log, and feeding approved cases back into the benchmark.</li>
+        <li><b>Reliability</b> — embedding-service client with circuit breaker, timeouts and response validation, plus a startup guard against unsafe production settings.</li>
+        <li><b>Observability</b> — tracing of execution paths and LLM calls, monitoring metrics and a production health dashboard.</li>
+      </ul>
+    </article>
+
+    <article class="feature reveal">
+      <div>
+        <span class="kicker mono">Full stack · Microservices · AI agent</span>
+        <h3>GiftForU — E-commerce Platform with an AI Agent</h3>
+        <p>A complete online gift store: Angular front end, a .NET 9 backend, and a separate Python AI service powering “Maya”, a recommendation chat agent — all containerized and deployed with Docker Compose behind nginx.</p>
+        <div class="chips"><span class="chip">.NET 9</span><span class="chip">C#</span><span class="chip">EF Core</span><span class="chip">SQL Server</span><span class="chip">Redis</span><span class="chip">Kafka</span><span class="chip">Angular</span><span class="chip">FastAPI</span><span class="chip">OpenAI</span><span class="chip">Docker</span><span class="chip">xUnit</span></div>
+        <a class="more" href="https://github.com/AyalaOnGit/My-FullstackApp" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <ul>
+        <li><b>Layered .NET 9 API</b> — dependency injection, DTOs, AutoMapper, async code and xUnit/Moq tests.</li>
+        <li><b>Security</b> — JWT in HttpOnly cookies, role-based access, per-IP and per-user sliding-window rate limiting, error-handling middleware.</li>
+        <li><b>Performance</b> — Redis caching with TTL and invalidation; asynchronous order processing with a Kafka producer and consumer.</li>
+        <li><b>AI service</b> — chat agent, semantic search and real-time emotion detection.</li>
+      </ul>
+    </article>
+
+    <article class="feature reveal">
+      <div>
+        <span class="kicker mono">Real-time systems · Multiplayer</span>
+        <h3>Kung-Fu Chess</h3>
+        <p>Chess with no turns: both players move at any moment, every move takes real time to travel, and pieces can be intercepted mid-flight. One deterministic engine drives both local play and online multiplayer over websockets.</p>
+        <div class="chips"><span class="chip">Python 3.13</span><span class="chip">asyncio</span><span class="chip">websockets</span><span class="chip">OpenCV</span><span class="chip">SQLite</span><span class="chip">pytest</span></div>
+        <a class="more" href="https://github.com/AyalaOnGit/Kung-Fu-Chess" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+      <ul>
+        <li><b>Simulated-clock engine</b> — every move and jump is a timed event, so results are identical locally and over the network.</li>
+        <li><b>Networked server</b> — async multiplayer with accounts, ELO ratings and match history.</li>
+        <li><b>Clean architecture</b> — framework-free, dependency-injected subsystems with the engine fully separated from UI and networking.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="head"><h2>More projects</h2><span class="mono">// agents, RAG, backend & tooling</span></div>
+    <div class="filters" role="tablist">
+      <button class="on" data-f="all">All</button>
+      <button data-f="ai">AI & Agents</button>
+      <button data-f="backend">Backend & Systems</button>
+    </div>
+    <div class="grid" id="grid">
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/fitness-coach" target="_blank" rel="noopener">
+        <span class="icon">💪</span><h3>Fitness Coach Agent</h3>
+        <p>One Hebrew-speaking coaching agent built twice — a hand-written harness over the raw API vs. the Claude Agent SDK — with a full comparison of tokens, caching, cost and code size.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Agent SDK</span><span class="chip">pytest</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/MCPFolderOrganizer" target="_blank" rel="noopener">
+        <span class="icon">📁</span><h3>Super-Organizer MCP</h3>
+        <p>MCP server for Claude Desktop that analyzes, organizes and renames files using smart content sampling — every change approved by the user first.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">FastMCP</span><span class="chip">MCP</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/RAG_LlamaIndex_PROJECT" target="_blank" rel="noopener">
+        <span class="icon">🧭</span><h3>Agentic RAG Workflow</h3>
+        <p>Hybrid retrieval that routes each question to either vector search or structured extraction, then synthesizes one coherent answer.</p>
+        <div class="chips"><span class="chip">LlamaIndex</span><span class="chip">Workflows</span><span class="chip">Cohere</span><span class="chip">Gradio</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/LangChain-Project" target="_blank" rel="noopener">
+        <span class="icon">📓</span><h3>Research Agent</h3>
+        <p>A NotebookLM-style agent that searches the web, lets you approve sources (human-in-the-loop), and summarizes what you kept.</p>
+        <div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">Tavily</span><span class="chip">Streamlit</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/MCP-Weather-Assistant" target="_blank" rel="noopener">
+        <span class="icon">🌤️</span><h3>MCP Weather Assistant</h3>
+        <p>An AI host connected to two separate MCP servers — live scraping for Israel and the official NWS API for the US — answering in Hebrew or English.</p>
+        <div class="chips"><span class="chip">MCP</span><span class="chip">Gemini</span><span class="chip">Playwright</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/todo-ai-agent" target="_blank" rel="noopener">
+        <span class="icon">📝</span><h3>Todo AI Agent</h3>
+        <p>Full-stack task manager driven by natural-language chat, with a live-syncing task list beside the conversation.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">LangChain</span><span class="chip">React</span></div>
+      </a>
+      <a class="card reveal" data-c="ai" href="https://github.com/AyalaOnGit/shell-agent" target="_blank" rel="noopener">
+        <span class="icon">🛡️</span><h3>NL2CLI Shell Agent</h3>
+        <p>Turns plain language into PowerShell commands, hardened over three prompt-engineering iterations against destructive commands and prompt injection.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Llama 3.3</span><span class="chip">Gradio</span></div>
+      </a>
+      <a class="card reveal" data-c="backend" href="https://github.com/AyalaOnGit/Secure-Messenger" target="_blank" rel="noopener">
+        <span class="icon">🔐</span><h3>Secure Messenger</h3>
+        <p>Real-time encrypted messaging: AES-256-GCM at rest, JWT auth, Server-Sent Events, rate limiting and Alembic migrations, in a clean four-layer server.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">SSE</span><span class="chip">AES-GCM</span><span class="chip">JWT</span></div>
+      </a>
+      <a class="card reveal" data-c="backend" href="https://github.com/AyalaOnGit/Attendance-Report-Gen" target="_blank" rel="noopener">
+        <span class="icon">📄</span><h3>ReportGen</h3>
+        <p>Automates scanned attendance reports: OCR, format classification, deterministic transformations and export to PDF and Excel — built with Template Method and Strategy patterns.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Tesseract</span><span class="chip">Clean Arch</span></div>
+      </a>
+      <a class="card reveal" data-c="backend" href="https://github.com/AyalaOnGit/calendar-scheduler-service" target="_blank" rel="noopener">
+        <span class="icon">📅</span><h3>Calendar Scheduler</h3>
+        <p>Finds common free meeting slots for many participants with a sweep-line algorithm, on a layered, repository-based, fully testable design.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Algorithms</span><span class="chip">DI</span></div>
+      </a>
+      <a class="card reveal" data-c="backend" href="https://github.com/AyalaOnGit/WebAPIproject" target="_blank" rel="noopener">
+        <span class="icon">🐳</span><h3>WebAPIShop</h3>
+        <p>The .NET store API as a one-command Docker stack: SQL Server with auto-seeded data, Redis, Kafka with UI, and a background consumer service.</p>
+        <div class="chips"><span class="chip">.NET</span><span class="chip">Docker</span><span class="chip">Kafka</span><span class="chip">Redis</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="head"><h2>Toolbox</h2><span class="mono">// what I work with</span></div>
+    <div class="skills">
+      <div class="skill reveal"><h3>generative_ai</h3><div class="chips"><span class="chip">LLMs</span><span class="chip">LangGraph</span><span class="chip">LangChain</span><span class="chip">RAG</span><span class="chip">AI Agents</span><span class="chip">MCP</span><span class="chip">Function Calling</span><span class="chip">Prompt Engineering</span><span class="chip">Embeddings</span></div></div>
+      <div class="skill reveal"><h3>backend</h3><div class="chips"><span class="chip">C# / .NET 9</span><span class="chip">ASP.NET Core</span><span class="chip">EF Core</span><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">REST</span><span class="chip">JWT</span></div></div>
+      <div class="skill reveal"><h3>frontend</h3><div class="chips"><span class="chip">Angular</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span></div></div>
+      <div class="skill reveal"><h3>data_&_ml</h3><div class="chips"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">OpenCV</span><span class="chip">NLP</span></div></div>
+      <div class="skill reveal"><h3>data_&_infra</h3><div class="chips"><span class="chip">SQL Server</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">OpenSearch</span><span class="chip">Redis</span><span class="chip">Kafka</span><span class="chip">Docker</span><span class="chip">nginx</span><span class="chip">AWS</span><span class="chip">Linux</span></div></div>
+      <div class="skill reveal"><h3>quality_&_ops</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">xUnit</span><span class="chip">pytest</span><span class="chip">OpenTelemetry</span><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">Claude Code</span><span class="chip">Cursor</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="head"><h2>Education</h2><span class="mono">// foundations</span></div>
+    <div class="timeline">
+      <div class="edu reveal"><span class="when mono">2026</span><div><h3>Data & AI Bootcamp — VAST DATA</h3><p>Selective admission. Intensive KamaTech program in data infrastructure and AI.</p></div></div>
+      <div class="edu reveal"><span class="when mono">2024 – 2026</span><div><h3>Practical Engineer, Software Engineering <span class="honor">with honors</span></h3><p>MAHAT & KamaTech. UltraCode program: algorithms & data structures, graph theory, operating systems, AI, machine learning, C++, discrete math, calculus, linear algebra, probability & statistics. Hugging Face certification in LLMs & AI agents.</p></div></div>
+      <div class="edu reveal"><span class="when mono">Languages</span><div><h3>Hebrew · French · English</h3><p>Native Hebrew and French; fluent spoken and technical English.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let's build something.</h2>
+    <p>I'm looking for my next role in AI, backend or full-stack engineering.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:arh67637@gmail.com">arh67637@gmail.com</a>
+      <a class="btn" href="https://github.com/AyalaOnGit" target="_blank" rel="noopener">github.com/AyalaOnGit</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© <span id="y"></span> Ayala Hardy</span><span class="mono">built with HTML & CSS · hosted on GitHub Pages</span></div></footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const root=document.documentElement,btn=document.getElementById('theme');
+try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch(e){}
+btn.onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;root.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){}};
+document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('#grid .card').forEach(c=>c.style.display=(b.dataset.f==='all'||c.dataset.c===b.dataset.f)?'':'none');
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
